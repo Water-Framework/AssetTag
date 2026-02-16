@@ -37,7 +37,6 @@ public class AssetTagRestControllerImpl extends BaseEntityRestApi<AssetTag> impl
     //All CRUD methods are already exposed by AssetTagRestApi interface with JAXRS Annotatiosn
     //if you need to check which methods are exposed please go to it.water.assettag.api.rest.AssetTag
 
-    //todo add custom exposed methods or override CRUD operations
     //ATTENTION: use always AssetTagApi in order to ensure the user is requesting operations has the right privileges to do it
 
 }

@@ -3,9 +3,7 @@ package it.water.assettag.service.rest.spring;
 
 import it.water.assettag.service.rest.AssetTagRestControllerImpl;
 import it.water.core.api.model.*;
-import it.water.core.api.repository.*;
 import it.water.core.api.repository.query.*;
-import it.water.assettag.api.*;
 import it.water.assettag.model.*;
 import org.springframework.web.bind.annotation.RestController;
 

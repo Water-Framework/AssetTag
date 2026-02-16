@@ -15,7 +15,6 @@
  */
 
 package it.water.assettag.service.rest.spring;
-import it.water.assettag.api.*;
 import it.water.assettag.api.rest.*;
 import it.water.assettag.model.*;
 

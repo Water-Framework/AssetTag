@@ -1,7 +1,6 @@
 package it.water.assettag.api;
 
 import it.water.core.api.repository.BaseRepository;
-import it.water.core.interceptors.annotations.*;
 import it.water.assettag.model.AssetTag;
 
 /**

@@ -92,5 +92,5 @@ public class AssetTag extends AbstractJpaExpandableEntity implements ProtectedEn
      */
     @JsonIgnore
     @OneToMany(mappedBy = "tag", orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private Set<AssetTagResource> resources = new HashSet<>();
+    private Set<WaterAssetTagResource> resources = new HashSet<>();
 }

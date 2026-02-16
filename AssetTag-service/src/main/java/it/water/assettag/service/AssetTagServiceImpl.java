@@ -31,7 +31,6 @@ public class AssetTagServiceImpl extends BaseEntityServiceImpl<AssetTag> impleme
         
         super(AssetTag.class);
     }
-    
-    //todo: add custom logic here...
+
     //use getLog to retrieve Logger instance automatically instantiated for this class
 }

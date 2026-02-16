@@ -1,6 +1,7 @@
 package it.water.assettag.model;
 
 import com.fasterxml.jackson.annotation.JsonView;
+import it.water.core.api.model.AssetTagResource;
 import it.water.core.api.permission.ProtectedEntity;
 import it.water.core.api.service.rest.WaterJsonView;
 import it.water.core.permission.action.CrudActions;
@@ -15,7 +16,7 @@ import lombok.*;
 
 
 /**
- * AssetTagResource Entity Class.
+ * WaterAssetTagResource Entity Class.
  * Maps the association between any resource (entity) and a tag.
  * This allows generic tagging of any entity in the system.
  */
@@ -31,7 +32,7 @@ import lombok.*;
 @EqualsAndHashCode(callSuper = true, of = {"resourceName", "resourceId"})
 //Actions - internal entity, managed through AssetTag
 @AccessControl(availableActions = {CrudActions.SAVE, CrudActions.UPDATE, CrudActions.FIND, CrudActions.FIND_ALL, CrudActions.REMOVE})
-public class AssetTagResource extends AbstractJpaExpandableEntity implements ProtectedEntity, it.water.core.api.model.AssetTagResource {
+public class WaterAssetTagResource extends AbstractJpaExpandableEntity implements ProtectedEntity, AssetTagResource {
 
     /**
      * Resource name - typically the entity class name
@@ -60,9 +61,9 @@ public class AssetTagResource extends AbstractJpaExpandableEntity implements Pro
     private AssetTag tag;
 
     /**
-     * Constructor for creating a new AssetTagResource
+     * Constructor for creating a new WaterAssetTagResource
      */
-    public AssetTagResource(String resourceName, long resourceId, AssetTag tag) {
+    public WaterAssetTagResource(String resourceName, long resourceId, AssetTag tag) {
         this.resourceName = resourceName;
         this.resourceId = resourceId;
         this.tag = tag;

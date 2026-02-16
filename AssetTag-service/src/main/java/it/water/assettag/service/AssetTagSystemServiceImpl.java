@@ -3,8 +3,9 @@ package it.water.assettag.service;
 import it.water.assettag.api.AssetTagRepository;
 import it.water.assettag.api.AssetTagSystemApi;
 import it.water.assettag.model.AssetTag;
-import it.water.assettag.model.AssetTagResource;
+import it.water.assettag.model.WaterAssetTagResource;
 import it.water.core.api.asset.AssetTagManager;
+import it.water.core.api.model.AssetTagResource;
 import it.water.core.api.model.PaginableResult;
 import it.water.core.api.registry.filter.ComponentFilterBuilder;
 import it.water.core.interceptors.annotations.*;
@@ -44,7 +45,7 @@ public class AssetTagSystemServiceImpl extends BaseEntitySystemServiceImpl<Asset
      * Find an AssetTagResource by its parameters
      */
     @Override
-    public it.water.core.api.model.AssetTagResource findAssetTagResource(String resourceName, long resourceId, long tagId) {
+    public AssetTagResource findAssetTagResource(String resourceName, long resourceId, long tagId) {
         getLog().debug("Finding AssetTagResource for resource: {} - {} in tag: {}",
                 resourceName, resourceId, tagId);
         AssetTag tag = this.find(tagId);
@@ -64,13 +65,10 @@ public class AssetTagSystemServiceImpl extends BaseEntitySystemServiceImpl<Asset
     public void addAssetTag(String resourceName, long resourceId, long tagId) {
         getLog().debug("Adding AssetTag {} to resource: {} - {}", tagId, resourceName, resourceId);
         AssetTag tag = this.find(tagId);
-        if (tag != null) {
-            // Check if association already exists
-            if (findAssetTagResource(resourceName, resourceId, tagId) == null) {
-                AssetTagResource atr = new AssetTagResource(resourceName, resourceId, tag);
+        if (tag != null && findAssetTagResource(resourceName, resourceId, tagId) == null) {
+                WaterAssetTagResource atr = new WaterAssetTagResource(resourceName, resourceId, tag);
                 tag.getResources().add(atr);
                 this.update(tag);
-            }
         }
     }
 
@@ -117,8 +115,8 @@ public class AssetTagSystemServiceImpl extends BaseEntitySystemServiceImpl<Asset
         AssetTag tag = this.find(tagId);
         if (tag != null && tag.getResources() != null) {
             // Find and remove the resource from the collection
-            AssetTagResource toRemove = null;
-            for (AssetTagResource atr : tag.getResources()) {
+            WaterAssetTagResource toRemove = null;
+            for (WaterAssetTagResource atr : tag.getResources()) {
                 if (atr.getResourceName().equals(resourceName) && atr.getResourceId() == resourceId) {
                     toRemove = atr;
                     break;
